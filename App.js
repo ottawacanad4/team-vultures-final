@@ -17,7 +17,14 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{
+            headerStyle: { backgroundColor: "#27232B" }, // Change the background color here
+            headerTintColor: "#CDBBAD", // Change the text color if needed
+            headerTitleStyle: { fontWeight: "bold" },
+          }}
+        >
           <Stack.Screen
             name="Home"
             component={HomeScreen}
@@ -26,22 +33,22 @@ export default function App() {
           <Stack.Screen
             name="Login"
             component={LoginPage}
-            options={{ title: 'Login' }}
+            options={{ title: "Login" }}
           />
           <Stack.Screen
             name="Page1"
             component={Page1} // Updated import path
-            options={{ title: 'Page 1' }}
+            options={{ title: "Main Page" }}
           />
           <Stack.Screen
             name="Registration"
             component={Registration} // Updated import path
-            options={{ title: 'Registration' }}
+            options={{ title: "Registration" }}
           />
           <Stack.Screen
             name="ForgotPasswordScreen"
             component={ForgotPasswordScreen}
-            options={{ title: 'Forgot Password' }}
+            options={{ title: "Forgot Password" }}
           />
         </Stack.Navigator>
       </NavigationContainer>
@@ -58,8 +65,13 @@ const HomeScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Header />
       <View style={styles.content}>
-      <h1 style={{ color: '#C76D31' }}>Let's get Started</h1>
-        <Button title="Login" onPress={handleLoginPress} color="#1A2F36" />
+        <h1 style={{ color: "#444147" }}>Login to Your Account!</h1>
+        <Button
+          title="Login"
+          onPress={handleLoginPress}
+          color="#444147"
+          titleStyle={{ color: "#CDBBAD" }} // Change the color of the button text
+        />
       </View>
       <StatusBar style="auto" />
     </View>
@@ -69,12 +81,12 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#CDBBAD",
   },
   content: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 20,
   },
 });

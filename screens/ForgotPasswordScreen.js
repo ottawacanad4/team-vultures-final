@@ -16,10 +16,7 @@ const ForgotPasswordScreen = () => {
       <Header />
       <View style={styles.content}>
         <Text style={styles.label}></Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your username"
-        />
+        <TextInput style={styles.input} placeholder="Enter your username" />
         <Text style={styles.label}></Text>
         <TextInput
           style={styles.input}
@@ -33,10 +30,10 @@ const ForgotPasswordScreen = () => {
           placeholder="Confirm new password"
         />
         <View style={styles.buttonContainer}>
-          <Button 
-            title="Reset" 
-            onPress={handleResetPassword} 
-            color="#1A2F36" // Set button color to #1A2F36
+          <Button
+            title="Reset"
+            onPress={handleResetPassword}
+            color="#444147" // Set button color to #444147
           />
         </View>
       </View>
@@ -47,11 +44,11 @@ const ForgotPasswordScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#CDBBAD",
   },
   content: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     paddingHorizontal: 20,
     paddingTop: 20,
   },
@@ -60,17 +57,17 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   input: {
-    width: '75%',
+    width: "75%",
     height: 40,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#6E5447",
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
   },
   buttonContainer: {
     marginTop: 20,
-    width: '45%', // Set width to 45%
+    width: "45%", // Set width to 45%
   },
 });
 

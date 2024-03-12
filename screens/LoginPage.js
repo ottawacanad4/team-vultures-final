@@ -26,25 +26,34 @@ const LoginPage = () => {
     <SafeAreaView style={styles.container}>
       <Header />
       <View style={styles.content}>
-        
         <TextInput style={styles.input} placeholder="Username" />
-        
+
         {/* Password input */}
-        <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} />
-        
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry={true}
+        />
+
         {/* Login button */}
-        <TouchableOpacity style={[styles.button, { backgroundColor: '#1A2F36', width: '45%' }]} onPress={handleLogin}>
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: "#444147", width: "45%" }]}
+          onPress={handleLogin}
+        >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        
+
         {/* Sign up button */}
-        <TouchableOpacity style={[styles.button, { backgroundColor: '#1A2F36', width: '45%' }]} onPress={handleSignUp}>
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: "#444147", width: "45%" }]}
+          onPress={handleSignUp}
+        >
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
-        
+
         {/* Forgot password text */}
         <TouchableOpacity onPress={handleResetPassword}>
-          <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+          <Text style={styles.forgotPasswordText}>Forgot password?</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -54,40 +63,40 @@ const LoginPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between', // Adjusted to space-between to create space between header and content
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    justifyContent: "space-between", // Adjusted to space-between to create space between header and content
+    alignItems: "center",
+    backgroundColor: "#CDBBAD",
     paddingTop: 30,
   },
   content: {
     flex: 1, // Added flex: 1 to make content take available space
-    justifyContent: 'center', // Center the content vertically
-    alignItems: 'center', // Center the content horizontally
-    width: '80%',
+    justifyContent: "center", // Center the content vertically
+    alignItems: "center", // Center the content horizontally
+    width: "80%",
   },
   input: {
     height: 40,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#6E5447",
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-    width: '100%', // Set width to 100% to fill the container
+    width: "100%", // Set width to 100% to fill the container
   },
   button: {
-    backgroundColor: '#1A2F36',
+    backgroundColor: "#444147",
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
-    width: '45%', // Adjusted width to 45% to fit two buttons in a row
+    width: "45%", // Adjusted width to 45% to fit two buttons in a row
   },
   buttonText: {
-    color: '#fff',
-    textAlign: 'center',
+    color: "#CDBBAD",
+    textAlign: "center",
   },
   forgotPasswordText: {
-    textAlign: 'center',
-    color: '#AE6839',
+    textAlign: "center",
+    color: "#444147",
   },
 });
 

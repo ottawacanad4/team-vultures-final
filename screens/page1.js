@@ -18,11 +18,11 @@ const Page1 = () => {
         <View style={styles.content}>
           {/* Display the image */}
           <Image
-            source={require('../assets/home.png')} // Path to the image file
+            source={require("../assets/home.png")} // Path to the image file
             style={styles.image} // Apply styles to the image
           />
           {/* Your other page content here */}
-          <Button title="Logout" onPress={handleLogout} color="#1A2F36" />
+          <Button title="Logout" onPress={handleLogout} color="#444147" />
         </View>
       </View>
     </SafeAreaProvider>
@@ -32,18 +32,23 @@ const Page1 = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#CDBBAD",
   },
   content: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    color: "#CDBBAD",
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 20,
   },
   image: {
-    width: 200, 
-    height: 200, 
-    resizeMode: 'contain', 
+    width: 200,
+    height: 200,
+    resizeMode: "contain",
+  },
+  title: {
+    color: "#CDBBAD",
+    textAlign: "center",
   },
 });
 

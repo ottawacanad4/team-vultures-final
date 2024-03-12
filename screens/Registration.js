@@ -56,12 +56,12 @@ const RegistrationScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#CDBBAD",
   },
   content: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 20,
   },
   label: {
@@ -69,26 +69,26 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   buttonContainer: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   button: {
-    width: '45%', // Adjust the width as needed
-    backgroundColor: '#1A2F36', // Set button background color
+    width: "45%", // Adjust the width as needed
+    backgroundColor: "#444147", // Set button background color
     borderRadius: 5, // Add border radius for rounded corners
     paddingVertical: 10, // Add padding vertically
-    alignItems: 'center', // Center content horizontally
+    alignItems: "center", // Center content horizontally
   },
   buttonText: {
-    color: '#fff', // Set text color
+    color: "#CDBBAD", // Set text color
     fontSize: 16, // Set text font size
   },
   input: {
-    width: '75%',
+    width: "75%",
     height: 40,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#6E5447",
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,

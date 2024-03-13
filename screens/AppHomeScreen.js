@@ -1,8 +1,8 @@
 // AppHomeScreen.js
-import React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import Header from '../component/Header';
+import React from "react";
+import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import Header from "../component/Header";
 
 const AppHomeScreen = ({ navigation }) => {
   const handleLoginPress = () => {
@@ -10,15 +10,17 @@ const AppHomeScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Header />
-      <View style={styles.content}>
-        <Button title="Login" onPress={handleLoginPress} color="#CDBBAD" />
-      </View>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <View style={styles.container}>
+      <Header />
+      <View style={styles.content}>
+        <TouchableOpacity onPress={handleLoginPress} style={styles.button}>
+          <Text style={styles.loginText}>Login</Text>
+        </TouchableOpacity>
+      </View>
+      <StatusBar style="auto" />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -27,19 +29,21 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingHorizontal: 8,
-    backgroundcolor: "#444147",
     alignItems: "center",
-
     justifyContent: "center",
     paddingHorizontal: 20,
   },
+  button: {
+    backgroundColor: "#444147",
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 25, // Adjust the border radius to make the button rounded
+  },
   loginText: {
-    color: "#CDBBAD", // Change the color to whatever you prefer
+    color: "#CDBBAD",
     fontSize: 18,
     fontWeight: "bold",
   },
 });
-
 
 export default AppHomeScreen;

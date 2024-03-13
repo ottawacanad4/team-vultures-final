@@ -1,25 +1,34 @@
-import React from 'react';
-import { StyleSheet, View, Text, TextInput, Button, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; // Import the hook
-import { SafeAreaView } from 'react-native-safe-area-context'; // Import SafeAreaView instead of SafeAreaProvider
-import Header from '../component/Header';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  Button,
+  TouchableOpacity,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Header from "../component/Header";
 
 const LoginPage = () => {
-  const navigation = useNavigation(); // Get the navigation object
+  const navigation = useNavigation();
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
 
   const handleLogin = () => {
-    // Logic for handling login
-    navigation.navigate('Page1');
+    navigation.navigate("Page1");
   };
 
   const handleSignUp = () => {
-    // Logic for handling sign up
-    navigation.navigate('Registration');
+    navigation.navigate("Registration");
   };
 
   const handleResetPassword = () => {
-    // Logic for handling forgot password
     navigation.navigate("ForgotPasswordScreen");
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -29,11 +38,19 @@ const LoginPage = () => {
         <TextInput style={styles.input} placeholder="Username" />
 
         {/* Password input */}
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry={true}
-        />
+        <View style={styles.passwordContainer}>
+          <TextInput
+            style={styles.passwordInput}
+            placeholder="Password"
+            secureTextEntry={!showPassword} // Toggle secureTextEntry based on showPassword state
+          />
+          <TouchableOpacity
+            onPress={togglePasswordVisibility}
+            style={styles.eyeIcon}
+          >
+            <Text style={styles.eyeIconText}>{showPassword ? "👁" : "👁"}</Text>
+          </TouchableOpacity>
+        </View>
 
         {/* Login button */}
         <TouchableOpacity
@@ -58,20 +75,20 @@ const LoginPage = () => {
       </View>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between", // Adjusted to space-between to create space between header and content
+    justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "#CDBBAD",
     paddingTop: 30,
   },
   content: {
-    flex: 1, // Added flex: 1 to make content take available space
-    justifyContent: "center", // Center the content vertically
-    alignItems: "center", // Center the content horizontally
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     width: "80%",
   },
   input: {
@@ -81,14 +98,34 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
-    width: "100%", // Set width to 100% to fill the container
+    width: "100%",
+  },
+  passwordContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+  },
+  passwordInput: {
+    flex: 1,
+    height: 40,
+    borderWidth: 1,
+    borderColor: "#6E5447",
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+  },
+  eyeIcon: {
+    marginLeft: -25, // Adjust the margin to align the eye icon more to the side
+  },
+  eyeIconText: {
+    fontSize: 24, // Adjust the font size to make the eye icon bigger
   },
   button: {
     backgroundColor: "#444147",
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
-    width: "45%", // Adjusted width to 45% to fit two buttons in a row
+    width: "45%",
   },
   buttonText: {
     color: "#CDBBAD",

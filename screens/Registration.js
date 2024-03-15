@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Header from '../component/Header';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { FontAwesome5 } from "@expo/vector-icons";
+import Header from "../component/Header";
 
 const RegistrationScreen = ({ navigation }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [securePassword, setSecurePassword] = useState(true);
 
   const handleRegister = () => {
-    console.log('handleRegister function called');
-   
+    console.log("handleRegister function called");
+
     navigation.goBack();
   };
 
@@ -20,28 +28,64 @@ const RegistrationScreen = ({ navigation }) => {
         <Header />
         <View style={styles.content}>
           <Text style={styles.label}></Text>
-          <TextInput
-            style={styles.input}
-            value={username}
-            onChangeText={setUsername}
-            placeholder="Enter your username"
-          />
+          <View style={styles.passwordInput}>
+            <TextInput
+              style={styles.input}
+              value={username}
+              onChangeText={setUsername}
+              placeholder="Enter your username"
+            />
+            <TouchableOpacity
+              onPress={() => setSecurePassword(!securePassword)}
+              style={styles.eyeIcon}
+            >
+              <FontAwesome5
+                name={securePassword ? "" : ""}
+                size={20}
+                color="#6E5447"
+              />
+            </TouchableOpacity>
+          </View>
           <Text style={styles.label}></Text>
-          <TextInput
-            style={styles.input}
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry={true}
-            placeholder="Enter your password"
-          />
+          <View style={styles.passwordInput}>
+            <TextInput
+              style={styles.input}
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry={securePassword}
+              placeholder="Enter your password"
+            />
+            <TouchableOpacity
+              onPress={() => setSecurePassword(!securePassword)}
+              style={styles.eyeIcon}
+            >
+              <FontAwesome5
+                name={securePassword ? "eye-slash" : "eye"}
+                size={20}
+                color="#6E5447"
+              />
+            </TouchableOpacity>
+          </View>
           <Text style={styles.label}></Text>
-          <TextInput
-            style={styles.input}
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
-            secureTextEntry={true}
-            placeholder="Confirm password"
-          />
+          <View style={styles.passwordInput}>
+            <TextInput
+              style={styles.input}
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+              secureTextEntry={securePassword}
+              placeholder="Confirm password"
+            />
+            <TouchableOpacity
+              onPress={() => setSecurePassword(!securePassword)}
+              style={styles.eyeIcon}
+            >
+              <FontAwesome5
+                name={securePassword ? "eye-slash" : "eye"}
+                size={20}
+                color="#6E5447"
+              />
+            </TouchableOpacity>
+          </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity onPress={handleRegister} style={styles.button}>
               <Text style={styles.buttonText}>Register</Text>
@@ -74,24 +118,33 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   button: {
-    width: "45%", // Adjust the width as needed
-    backgroundColor: "#444147", // Set button background color
-    borderRadius: 5, // Add border radius for rounded corners
-    paddingVertical: 10, // Add padding vertically
-    alignItems: "center", // Center content horizontally
+    width: "45%",
+    backgroundColor: "#444147",
+    borderRadius: 5,
+    paddingVertical: 10,
+    alignItems: "center",
   },
   buttonText: {
-    color: "#CDBBAD", // Set text color
-    fontSize: 16, // Set text font size
+    color: "#CDBBAD",
+    fontSize: 16,
   },
   input: {
-    width: "75%",
+    flex: 1,
     height: 40,
     borderWidth: 1,
     borderColor: "#6E5447",
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
+  },
+  passwordInput: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "75%",
+  },
+  eyeIcon: {
+    position: "absolute",
+    right: 10,
   },
 });
 

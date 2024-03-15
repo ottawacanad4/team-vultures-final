@@ -4,16 +4,18 @@ import {
   View,
   Text,
   TextInput,
-  Button,
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { FontAwesome5 } from "@expo/vector-icons";
 import Header from "../component/Header";
 
 const LoginPage = () => {
   const navigation = useNavigation();
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [securePassword, setSecurePassword] = useState(true);
 
   const handleLogin = () => {
     navigation.navigate("Page1");
@@ -28,27 +30,38 @@ const LoginPage = () => {
   };
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+    setSecurePassword(!securePassword);
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <Header />
       <View style={styles.content}>
-        <TextInput style={styles.input} placeholder="Username" />
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          value={username}
+          onChangeText={setUsername}
+        />
 
         {/* Password input */}
-        <View style={styles.passwordContainer}>
+        <View style={styles.passwordInput}>
           <TextInput
-            style={styles.passwordInput}
+            style={styles.input}
             placeholder="Password"
-            secureTextEntry={!showPassword} // Toggle secureTextEntry based on showPassword state
+            secureTextEntry={securePassword}
+            value={password}
+            onChangeText={setPassword}
           />
           <TouchableOpacity
             onPress={togglePasswordVisibility}
             style={styles.eyeIcon}
           >
-            <Text style={styles.eyeIconText}>{showPassword ? "👁" : "👁"}</Text>
+            <FontAwesome5
+              name={securePassword ? "eye-slash" : "eye"}
+              size={20}
+              color="#6E5447"
+            />
           </TouchableOpacity>
         </View>
 
@@ -100,25 +113,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: "100%",
   },
-  passwordContainer: {
+  passwordInput: {
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
   },
-  passwordInput: {
-    flex: 1,
-    height: 40,
-    borderWidth: 1,
-    borderColor: "#6E5447",
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginBottom: 10,
-  },
   eyeIcon: {
-    marginLeft: -25, // Adjust the margin to align the eye icon more to the side
-  },
-  eyeIconText: {
-    fontSize: 24, // Adjust the font size to make the eye icon bigger
+    position: "absolute",
+    right: 10,
   },
   button: {
     backgroundColor: "#444147",

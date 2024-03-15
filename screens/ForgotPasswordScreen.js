@@ -1,11 +1,24 @@
-import React from 'react';
-import { StyleSheet, View, Button, Text, TextInput } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Header from '../component/Header';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  View,
+  Button,
+  Text,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { FontAwesome5 } from "@expo/vector-icons";
+import Header from "../component/Header";
 
 const ForgotPasswordScreen = () => {
   const navigation = useNavigation();
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [secureNewPassword, setSecureNewPassword] = useState(true);
+  const [secureConfirmNewPassword, setSecureConfirmNewPassword] =
+    useState(true);
 
   const handleResetPassword = () => {
     navigation.goBack();
@@ -16,30 +29,72 @@ const ForgotPasswordScreen = () => {
       <Header />
       <View style={styles.content}>
         <Text style={styles.label}></Text>
-        <TextInput style={styles.input} placeholder="Enter your username" />
+        <View style={styles.passwordInput}>
+          <TextInput style={styles.input} placeholder="Enter your username" />
+          <TouchableOpacity
+            onPress={() => setSecureNewPassword(!secureNewPassword)}
+            style={styles.eyeIcon}
+          >
+            <FontAwesome5
+              name={secureNewPassword ? "" : ""}
+              size={20}
+              color="#6E5447"
+            />
+          </TouchableOpacity>
+        </View>
         <Text style={styles.label}></Text>
-        <TextInput
-          style={styles.input}
-          secureTextEntry={true}
-          placeholder="Enter new password"
-        />
+        <View style={styles.passwordInput}>
+          <TextInput
+            style={styles.input}
+            value={newPassword}
+            onChangeText={setNewPassword}
+            secureTextEntry={secureNewPassword}
+            placeholder="Enter new password"
+          />
+          <TouchableOpacity
+            onPress={() => setSecureNewPassword(!secureNewPassword)}
+            style={styles.eyeIcon}
+          >
+            <FontAwesome5
+              name={secureNewPassword ? "eye-slash" : "eye"}
+              size={20}
+              color="#6E5447"
+            />
+          </TouchableOpacity>
+        </View>
         <Text style={styles.label}></Text>
-        <TextInput
-          style={styles.input}
-          secureTextEntry={true}
-          placeholder="Confirm new password"
-        />
+        <View style={styles.passwordInput}>
+          <TextInput
+            style={styles.input}
+            value={confirmNewPassword}
+            onChangeText={setConfirmNewPassword}
+            secureTextEntry={secureConfirmNewPassword}
+            placeholder="Confirm new password"
+          />
+          <TouchableOpacity
+            onPress={() =>
+              setSecureConfirmNewPassword(!secureConfirmNewPassword)
+            }
+            style={styles.eyeIcon}
+          >
+            <FontAwesome5
+              name={secureConfirmNewPassword ? "eye-slash" : "eye"}
+              size={20}
+              color="#6E5447"
+            />
+          </TouchableOpacity>
+        </View>
         <View style={styles.buttonContainer}>
           <Button
             title="Reset"
             onPress={handleResetPassword}
-            color="#444147" // Set button color to #444147
+            color="#444147"
           />
         </View>
       </View>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -57,7 +112,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   input: {
-    width: "75%",
+    flex: 1,
     height: 40,
     borderWidth: 1,
     borderColor: "#6E5447",
@@ -67,7 +122,16 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 20,
-    width: "45%", // Set width to 45%
+    width: "45%",
+  },
+  passwordInput: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "75%",
+  },
+  eyeIcon: {
+    position: "absolute",
+    right: 10,
   },
 });
 

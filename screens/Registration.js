@@ -15,6 +15,8 @@ const RegistrationScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [securePassword, setSecurePassword] = useState(true);
+  const [secureNewPassword, setSecureNewPassword] =
+    useState(true);
 
   const handleRegister = () => {
     console.log("handleRegister function called");
@@ -72,15 +74,15 @@ const RegistrationScreen = ({ navigation }) => {
               style={styles.input}
               value={confirmPassword}
               onChangeText={setConfirmPassword}
-              secureTextEntry={securePassword}
+              secureTextEntry={secureNewPassword}
               placeholder="Confirm password"
             />
             <TouchableOpacity
-              onPress={() => setSecurePassword(!securePassword)}
+              onPress={() => setSecureNewPassword(!secureNewPassword)}
               style={styles.eyeIcon}
             >
               <FontAwesome5
-                name={securePassword ? "eye-slash" : "eye"}
+                name={secureNewPassword ? "eye-slash" : "eye"}
                 size={20}
                 color="#6E5447"
               />
